@@ -1,4 +1,5 @@
 package com.BanqueBlood.Banque_Blood.controller;
+import com.BanqueBlood.Banque_Blood.model.Accepter;
 import com.BanqueBlood.Banque_Blood.model.Confirmer;
 import com.BanqueBlood.Banque_Blood.services.ConfirmerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,10 @@ public class ConfirmerController {
     @PutMapping("/modifierConfirmer/{id}")
     Confirmer modifierConfirm(@PathVariable("id")Long id, @RequestBody Confirmer confirmer){
         return confirmerService.modifierConfirm(confirmer, id);
+    }
+    @PostMapping("/ConfirmByUser")
+    Confirmer confirmerByUser(@RequestBody Accepter accepter){
+        return  confirmerService.afficherConfirmerByAccepter(accepter);
     }
 
 

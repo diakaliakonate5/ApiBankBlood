@@ -12,4 +12,5 @@ public interface AccepterService {
     void supprimerAccept(Long id);
     Accepter modifierAccept(Accepter accepter, Long id);
     Accepter afficherAcceptById(Long id);
+
 }

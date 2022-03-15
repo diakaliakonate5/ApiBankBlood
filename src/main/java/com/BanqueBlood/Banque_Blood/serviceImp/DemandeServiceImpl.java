@@ -32,6 +32,7 @@ public class DemandeServiceImpl implements DemandeService {
         Demande  demande1 = demandeRepository.findById(id).get();
         demande1.setDate(demande.getDate());
         demande1.setNbrepoche(demande.getNbrepoche());
+        demande1.setNomHopital(demande.getNomHopital());
         return demandeRepository.save(demande1);
     }
 

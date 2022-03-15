@@ -1,7 +1,9 @@
 package com.BanqueBlood.Banque_Blood.serviceImp;
 
+import com.BanqueBlood.Banque_Blood.model.Accepter;
 import com.BanqueBlood.Banque_Blood.model.Confirmer;
 import com.BanqueBlood.Banque_Blood.model.Don;
+import com.BanqueBlood.Banque_Blood.model.Utilisateur;
 import com.BanqueBlood.Banque_Blood.repository.ConfirmerRepository;
 import com.BanqueBlood.Banque_Blood.services.ConfirmerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +53,7 @@ public class ConfirmerServiceImpl implements ConfirmerService {
         confirmer1.setUtilisateur(confirmer.getUtilisateur());
         confirmer1.setDate(confirmer.getDate());
        confirmer1.setAccepter(confirmer.getAccepter());
+
        confirmer1.setDateQuarantaine(confirmer.getDate().plusMonths(3));
 
 
@@ -60,5 +63,10 @@ public class ConfirmerServiceImpl implements ConfirmerService {
     @Override
     public Confirmer afficherConfirmById(Long id) {
         return null;
+    }
+
+    @Override
+    public Confirmer afficherConfirmerByAccepter(Accepter accepter) {
+        return confirmerRepository.findByAccepter(accepter);
     }
 }

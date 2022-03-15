@@ -74,4 +74,6 @@ public class Confirmer {
     public void setDateQuarantaine(LocalDate dateQuarantaine) {
         this.dateQuarantaine = dateQuarantaine;
     }
+
+
 }

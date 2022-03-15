@@ -1,11 +1,9 @@
 package com.BanqueBlood.Banque_Blood.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 
 @Entity
@@ -17,7 +15,7 @@ public class Demande implements Serializable {
 
     @ManyToOne
     private Utilisateur utilisateur;
-
+private String NomHopital;
 
 
 @ManyToOne
@@ -71,5 +69,13 @@ private GroupeSanguin groupeSanguin;
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNomHopital() {
+        return NomHopital;
+    }
+
+    public void setNomHopital(String nomHopital) {
+        NomHopital = nomHopital;
     }
 }
