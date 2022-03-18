@@ -2,6 +2,8 @@ package com.BanqueBlood.Banque_Blood.controller;
 
 import com.BanqueBlood.Banque_Blood.model.Accepter;
 
+import com.BanqueBlood.Banque_Blood.model.Confirmer;
+import com.BanqueBlood.Banque_Blood.model.Demande;
 import com.BanqueBlood.Banque_Blood.services.AccepterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +43,10 @@ public class AccepterController {
     @PutMapping("/modifierAccept/{id}")
     Accepter modifierAccept(@PathVariable("id")Long id, @RequestBody Accepter accepter){
         return accepterService.modifierAccept(accepter, id);
+    }
+    @PostMapping("/AcceptByDemande")
+    Accepter acceptByDemande(@RequestBody Demande demande){
+        return  accepterService.afficherDemandeById(demande);
     }
 
 

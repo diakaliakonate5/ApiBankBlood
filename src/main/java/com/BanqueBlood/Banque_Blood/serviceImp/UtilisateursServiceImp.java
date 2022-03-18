@@ -1,6 +1,7 @@
 package com.BanqueBlood.Banque_Blood.serviceImp;
 
 import com.BanqueBlood.Banque_Blood.Profils;
+import com.BanqueBlood.Banque_Blood.exceptions.EntityNotFound;
 import com.BanqueBlood.Banque_Blood.exceptions.ErrorsCode;
 import com.BanqueBlood.Banque_Blood.exceptions.InvalidEntity;
 
@@ -25,9 +26,9 @@ public class UtilisateursServiceImp  implements UtilisateurService  {
     public Utilisateur ajoutUtilisateur(Utilisateur utilisateur)
     {
     Optional<Utilisateur> user= utilsateursRepository.findByTelephone(utilisateur.getTelephone());
-     if(user.isPresent()){
-        return null;
-    //throw  new IllegalStateException("votre numero de telephone existe dejà");
+     if(!user.isEmpty()){
+        //return null;
+    throw  new EntityNotFound("votre numero de telephone existe dejà", ErrorsCode.UTILISATEUR_EXIST_DEJA);
  }
 
         return utilsateursRepository.save(utilisateur);
@@ -63,10 +64,15 @@ public class UtilisateursServiceImp  implements UtilisateurService  {
 
     @Override
     public Utilisateur login(String telephone, String password) {
+        Optional<Utilisateur> phone= utilsateursRepository.findByTelephone(telephone);
         Optional<Utilisateur> donneurConnexion = utilsateursRepository.findByTelephoneAndPassword(telephone,password);
    if(donneurConnexion.isEmpty()){
        throw new InvalidEntity("login ou mot de passe est incorrecte", ErrorsCode.UTILISATEUR_AUTHENTIFICATION_INVALID);
    }
+   if(phone.isEmpty()){
+       throw new InvalidEntity("telephone incorecte", ErrorsCode.UTILISATEUR_AUTHENTIFICATION_INVALID);
+   }
+
 
 
         return donneurConnexion.get();

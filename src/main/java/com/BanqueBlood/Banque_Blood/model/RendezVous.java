@@ -15,6 +15,7 @@ public class RendezVous {
     @Column(nullable = false)
     private LocalDate date;
     private LocalTime heure;
+    private int qtepoche;
     @ManyToOne
    private Accepter accepter;
 
@@ -70,5 +71,11 @@ private BanqueSang banqueSang;
         this.banqueSang = banqueSang;
     }
 
+    public int getQtepoche() {
+        return qtepoche;
+    }
 
+    public void setQtepoche(int qtepoche) {
+        this.qtepoche = qtepoche;
+    }
 }

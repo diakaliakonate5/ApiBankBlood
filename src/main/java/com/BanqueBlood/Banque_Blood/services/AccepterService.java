@@ -1,6 +1,7 @@
 package com.BanqueBlood.Banque_Blood.services;
 
 import com.BanqueBlood.Banque_Blood.model.Accepter;
+import com.BanqueBlood.Banque_Blood.model.Demande;
 
 
 import java.util.List;
@@ -12,5 +13,6 @@ public interface AccepterService {
     void supprimerAccept(Long id);
     Accepter modifierAccept(Accepter accepter, Long id);
     Accepter afficherAcceptById(Long id);
+    Accepter afficherDemandeById(Demande demande);
 
 }

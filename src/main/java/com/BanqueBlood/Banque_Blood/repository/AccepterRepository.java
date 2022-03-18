@@ -1,6 +1,8 @@
 package com.BanqueBlood.Banque_Blood.repository;
 
 import com.BanqueBlood.Banque_Blood.model.Accepter;
+import com.BanqueBlood.Banque_Blood.model.Confirmer;
+import com.BanqueBlood.Banque_Blood.model.Demande;
 import com.BanqueBlood.Banque_Blood.model.Utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,4 +18,5 @@ public interface AccepterRepository extends JpaRepository <Accepter, Long> {
 
     @Query("SELECT MAX(a) FROM Accepter a WHERE a.accepteur=:user")
     Accepter findByAccepterUser(@Param("user") Utilisateur utilisateur);
+    Accepter findByDemande(Demande demande);
 }

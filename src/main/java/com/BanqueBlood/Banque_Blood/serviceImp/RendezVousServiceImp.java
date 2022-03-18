@@ -42,6 +42,7 @@ public class RendezVousServiceImp implements RendezVousService {
        rendezVous1.setAccepter(rendezVous.getAccepter());
         rendezVous1.setDate(rendezVous.getDate());
        rendezVous1.setHeure(rendezVous.getHeure());
+       rendezVous1.setQtepoche(rendezVous.getQtepoche());
         return rendezVousRepository.save(rendezVous1);
     }
 

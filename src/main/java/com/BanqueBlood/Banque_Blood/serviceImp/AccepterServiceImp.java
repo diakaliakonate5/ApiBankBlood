@@ -2,6 +2,7 @@ package com.BanqueBlood.Banque_Blood.serviceImp;
 import com.BanqueBlood.Banque_Blood.exceptions.EntityNotFound;
 import com.BanqueBlood.Banque_Blood.exceptions.ErrorsCode;
 import com.BanqueBlood.Banque_Blood.model.Accepter;
+import com.BanqueBlood.Banque_Blood.model.Demande;
 import com.BanqueBlood.Banque_Blood.repository.AccepterRepository;
 import com.BanqueBlood.Banque_Blood.services.AccepterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ public class AccepterServiceImp implements AccepterService {
     @Autowired
     AccepterRepository accepterRepository ;
     @Autowired
+
     DonServiceImp donServiceImp;
 
     @Override
@@ -64,5 +66,10 @@ public class AccepterServiceImp implements AccepterService {
     @Override
     public Accepter afficherAcceptById(Long id) {
         return accepterRepository.findById(id).get();
+    }
+
+    @Override
+    public Accepter afficherDemandeById(Demande demande) {
+        return accepterRepository.findByDemande(demande);
     }
 }
